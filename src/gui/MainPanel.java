@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import Histograms.LUTimage;
 import binarization.NiblackFrame;
 import binarization.ThresholdFrame;
+import fingerprint.Minutiae;
 import fingerprint.Thinning;
 
 public class MainPanel extends JPanel {
@@ -53,13 +54,17 @@ public class MainPanel extends JPanel {
 		binarization.add(niblack);
 
 		// FINGERPRINT METHODS//
-
+		JMenu fingerprints = new JMenu("Fingerprints");
 		JMenuItem thinning = new JMenuItem("Thinning");
+		JMenuItem minutiae = new JMenuItem("Minutiae");
+		fingerprints.add(thinning);
+		fingerprints.add(minutiae);
+		
 
 		// ***MENU***//
 		menu.add(fileMenu);
 		menu.add(binarization);
-		menu.add(thinning);
+		menu.add(fingerprints);
 
 		imagePanel = new ImagePanel(); // MAIN IMAGE
 
@@ -136,6 +141,22 @@ public class MainPanel extends JPanel {
 					e1.printStackTrace();
 				}
 				imagePanel.img = t.image;
+				imagePanel.repaint();
+
+			}
+		});
+		
+		minutiae.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				Minutiae m = new Minutiae();
+				try {
+					m.MinutiaeRun(imagePanel);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				imagePanel.repaint();
 
 			}

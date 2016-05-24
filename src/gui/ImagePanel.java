@@ -49,7 +49,8 @@ public class ImagePanel extends JPanel {
 
 	public void imageLoad() throws IOException {
 
-		JFileChooser fc = new JFileChooser("C:\\Users\\Anna\\Documents\\sem6\\biometria\\BiometriaObrazki\\histogramy");
+		//JFileChooser fc = new JFileChooser("C:\\Users\\Anna\\Documents\\sem6\\biometria\\BiometriaObrazki\\histogramy");
+		JFileChooser fc = new JFileChooser();
 		int result = fc.showOpenDialog(null);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = fc.getSelectedFile();
